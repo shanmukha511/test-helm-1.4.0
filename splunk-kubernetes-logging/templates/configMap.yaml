@@ -13,7 +13,7 @@ data:
     @include source.containers.conf
     @include source.files.conf
     @include source.journald.conf
-    @include monit.conf
+    #@include monit.conf
     @include output.conf
     {{- if .Values.global.prometheus_enabled }}
     @include prometheus.conf
@@ -169,12 +169,12 @@ data:
 
 
   monit.conf: |-
-    <source>
-      @id fluentd-monitor-agent
-      @type monitor_agent
-      @label @SPLUNK
-      tag monitor_agent
-    </source>
+    #<source>
+      #@id fluentd-monitor-agent
+      #@type monitor_agent
+      #@label @SPLUNK
+      #tag monitor_agent
+    #</source>
 
 
   output.conf: |-
@@ -282,10 +282,10 @@ data:
       {{- end }}
 
       # = filters for monitor agent =
-      <filter monitor_agent>
-        @type jq_transformer
-        jq ".record.source = \"namespace:#{ENV['MY_NAMESPACE']}/pod:#{ENV['MY_POD_NAME']}\" | .record.sourcetype = \"fluentd:monitor-agent\" | .record.cluster_name = \"{{ or .Values.kubernetes.clusterName .Values.global.kubernetes.clusterName | default "cluster_name" }}\" | .record.index = \"{{ or .Values.global.splunk.hec.indexName .Values.splunk.hec.indexName | default "main" }}\" {{- if .Values.customMetadata }}{{- range .Values.customMetadata }}| .record.{{ .name }} = \"{{ .value }}\" {{- end }}{{- end }} | .record"
-      </filter>
+      #<filter monitor_agent>
+        #@type jq_transformer
+        #jq ".record.source = \"namespace:#{ENV['MY_NAMESPACE']}/pod:#{ENV['MY_POD_NAME']}\" | .record.sourcetype = \"fluentd:monitor-agent\" | .record.cluster_name = \"{{ or .Values.kubernetes.clusterName .Values.global.kubernetes.clusterName | default "cluster_name" }}\" | .record.index = \"{{ or .Values.global.splunk.hec.indexName .Values.splunk.hec.indexName | default "main" }}\" {{- if .Values.customMetadata }}{{- range .Values.customMetadata }}| .record.{{ .name }} = \"{{ .value }}\" {{- end }}{{- end }} | .record"
+      #</filter>
 
       # = custom filters specified by users =
       {{- range $name, $filterDef := .Values.customFilters }}
