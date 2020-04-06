@@ -52,7 +52,7 @@ splunk:
     # port to HEC, optional, default 8088
     port: 8088
     # token is required and should be provided by user
-    token: c0bcedc8-3dd8-4e62-9aa9-ab9d78a3aff4
+    token: c0bcedc5-1dd8-4e61-9aa9-ab4d77a2aff1
     # protocol has two options: "http" and "https", default is "https"
     protocol: http
     # indexName tells which index to use, this is optional. If it's not present, will use the "main".
