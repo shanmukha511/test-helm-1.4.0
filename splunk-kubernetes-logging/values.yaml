@@ -48,15 +48,15 @@ splunk:
   # Configurations for HEC (HTTP Event Collector)
   hec:
     # host is required and should be provided by user
-    host: 10.11.12.13
+    host: *************
     # port to HEC, optional, default 8088
     port: 8088
     # token is required and should be provided by user
-    token: c0bcedc5-1dd8-4e61-9aa9-ab4d77a2aff1
+    token: ************
     # protocol has two options: "http" and "https", default is "https"
-    protocol: http
+    protocol: https
     # indexName tells which index to use, this is optional. If it's not present, will use the "main".
-    indexName: test
+    indexName: *********
     # insecureSSL is a boolean, it indicates should it allow inscure SSL connection (when protocol is "https"). Default is false.
     insecureSSL: true
     # The PEM-format CA certificate for this client.
